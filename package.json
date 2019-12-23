@@ -1,0 +1,34 @@
+{
+  "name": "apartmentscraper",
+  "version": "1.0.0",
+  "description": "Price scraper for Courthouse Plaza apartments in Arlington VA",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon scraper.js",
+    "forever": "forever start scraper.js --uid 'apartmentscraper'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "forever": "^1.0.0",
+    "helmet": "^3.21.2",
+    "mongodb": "^3.4.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-latest": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-react": "^7.0.1",
+    "nodemon": "^1.11.0"
+  }
+}
