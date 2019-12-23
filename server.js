@@ -17,8 +17,6 @@ app.use(bodyParser.json({ limit: SIZE_LIMIT }));
     
 // Main route: Displays price data
 app.get('/', (req,res) => {
-    runScraper();
-    
     res.send(200);
 });
     
