@@ -17,8 +17,10 @@ app.use(bodyParser.urlencoded({ limit: SIZE_LIMIT, extended: true }));
 app.use(bodyParser.json({ limit: SIZE_LIMIT }));
     
 // Main route: Displays price data
-app.get('/', (req,res) => {
-    res.send(200);
+app.get('/', async (req,res) => {
+    let results = await mongo.find({name: 'Courthouse Plaza'});
+
+    res.send(results);
 });
     
 app.listen(3000);

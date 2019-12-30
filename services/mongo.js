@@ -21,7 +21,28 @@ class Mongo {
         } finally {
             client.close();
         }
-    } 
+    }
+    
+    async find(query) {
+        const client = await MongoClient.connect(MONGO_URL, { useNewUrlParser: true })
+        .catch(err => { console.log(err); });
+
+        if(!client) { return; }
+
+        let res = undefined;
+
+        try {
+            const db = client.db(MONGO_DB);
+            const collection = db.collection(MONGO_COLLECTION);
+
+            res = await collection.findOne(query);
+        } catch(err) {
+            console.log(err);
+        } finally {
+            client.close();
+            return res;
+        }
+    }
 }
 
 const mongo = new Mongo();
