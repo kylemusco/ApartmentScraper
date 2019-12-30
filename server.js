@@ -3,12 +3,13 @@ import bodyParser from 'body-parser';
 import helmet from 'helmet';
 import {runScraper} from './scrapers';
 import {SIZE_LIMIT} from './configs';
+import schedule from 'node-schedule';
+import mongo    from './services/mongo';
 
 const app = express();
 
-const dailyScrape = setInterval(
-    runScraper, 86400000
-);
+// Run scraper everyday at midnight
+schedule.scheduleJob('0 0 * * *', () => { runScraper(); })
 
 app.set('json spaces', 2);
 app.use(helmet());
