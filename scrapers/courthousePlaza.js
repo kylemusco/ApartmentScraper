@@ -8,8 +8,7 @@ const COURTHOUSE_URL = 'https://www.equityapartments.com/arlington/courthouse/co
 
 const getCourthousePlaza = async () => {
     // Grab HTML from Courthouse Plaza site
-    //const html = await request(COURTHOUSE_URL);
-    const html = fs.readFileSync('test.html');
+    const html = await request(COURTHOUSE_URL);
 
     let listings = [];
 
