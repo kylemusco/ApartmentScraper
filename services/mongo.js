@@ -45,6 +45,4 @@ class Mongo {
     }
 }
 
-const mongo = new Mongo();
-
-module.exports = mongo;
+module.exports = new Mongo();

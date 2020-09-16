@@ -1,0 +1,1 @@
+This is a web scraper that monitors the listings on my apartment's website. I use it to track how rent changes over time and have found it helpful when negotiating.
