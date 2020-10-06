@@ -37,7 +37,8 @@ app.get('/analytics', async (req,res) => {
     
     const results = {
         'ourRoom': sqft.averagePrice(courthousePlazaData, 3, undefined, roomId) * 704,
-        'priceRange': graph.pricesForRoom(courthousePlazaData, 3, roomId)
+        'priceRange': graph.pricesForRoom(courthousePlazaData, 3, roomId),
+        'vacancies': graph.vacancies(courthousePlazaData)
     };
 
     res.send(results);

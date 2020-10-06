@@ -30,6 +30,18 @@ class Graph {
             console.error(err);
         }
     }
+
+    vacancies(roomData) {
+        let vacancies = {}
+
+        for( const listing of roomData ) {
+            if(listing.time) {
+                vacancies[listing.time] = listing.listings.length;
+            }
+        }
+
+        return vacancies;
+    }
 }
 
 module.exports = new Graph();
