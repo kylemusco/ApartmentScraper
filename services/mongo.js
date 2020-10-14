@@ -6,7 +6,7 @@ class Mongo {
     constructor() {}
 
     async update(key, query) {
-        const client = await MongoClient.connect(MONGO_URL, { useNewUrlParser: true })
+        const client = await MongoClient.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
         .catch(err => { console.log(err); });
 
         if(!client) { return; }
@@ -15,7 +15,7 @@ class Mongo {
             const db = client.db(MONGO_DB);
             const collection = db.collection(MONGO_COLLECTION);
 
-            collection.update(key, query);
+            collection.updateOne(key, query);
         } catch(err) {
             console.log(err);
         } finally {
