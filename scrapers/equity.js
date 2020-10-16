@@ -54,7 +54,9 @@ class Equity {
 
     getNumber(str, index) {
         let matches = str.match(/[0-9]+/g);
-        return matches !== null ? parseInt(matches[index]) : 0
+        let num = matches !== null ? parseInt(matches[index]) : 0;
+
+        return isNaN(num)? -1 : num
     }
 
     getFilename(url) {
