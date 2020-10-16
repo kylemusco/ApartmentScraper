@@ -21,24 +21,30 @@ app.use(bodyParser.json({ limit: SIZE_LIMIT }));
 
 // Main route: Displays price data
 app.get('/', async (req,res) => {
-    let results = await mongo.find({name: 'Courthouse Plaza'});
-    res.send(results);
+    let listings = await mongo.find({});
+   
+   res.send(listings);
 });
- 
-// Return sqft pricing data
-app.get('/analytics', async (req,res) => {
 
-    // Load apartment data on start up
-    let courthousePlazaData = await mongo.find({name: 'Courthouse Plaza'});
-    courthousePlazaData = courthousePlazaData.queries;
+// Return sqft pricing data
+app.get('/analytics/:building', async (req,res) => {
+    let building = req.params.building || 'Courthouse Plaza';
+
+    let listings = await mongo.find({name: building});
+    if(listings.length === 0) {
+        return res.status(404).send(`${building} not found`);
+    }
+
+    listings = listings[0].queries;
 
     // Layout that matches my own
     let roomId = '4066-FP-5018-1-1-704';
     
     const results = {
-        'ourRoom': sqft.averagePrice(courthousePlazaData, 3, undefined, roomId) * 704,
-        'priceRange': graph.pricesForRoom(courthousePlazaData, 3, roomId),
-        'vacancies': graph.vacancies(courthousePlazaData)
+        //'ourRoom': sqft.averagePrice(courthousePlazaData, 3, undefined, roomId) * 704,
+        // 'priceRange': graph.pricesForRoom(courthousePlazaData, 3, roomId),
+        'vacancies': graph.vacancies(listings),
+        'listings': listings
     };
 
     res.send(results);

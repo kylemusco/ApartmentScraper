@@ -24,7 +24,7 @@ class Mongo {
     }
     
     async find(query) {
-        const client = await MongoClient.connect(MONGO_URL, { useNewUrlParser: true })
+        const client = await MongoClient.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true  })
         .catch(err => { console.log(err); });
 
         if(!client) { return; }
@@ -35,7 +35,7 @@ class Mongo {
             const db = client.db(MONGO_DB);
             const collection = db.collection(MONGO_COLLECTION);
 
-            res = await collection.findOne(query);
+            res = await collection.find(query).toArray();
         } catch(err) {
             console.log(err);
         } finally {
