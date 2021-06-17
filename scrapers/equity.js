@@ -11,7 +11,7 @@ class Equity {
     }
 
     async getListings() {
-        // Grab HTML from Courthouse Plaza site
+        // Grab HTML from apartment site
         const html = await request(this.url);
 
         let listings = [];

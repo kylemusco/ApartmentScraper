@@ -6,6 +6,11 @@ import Pershing from './Equity Residential/pershing';
 import ThePrime from './Equity Residential/thePrime';
 import Oak from './Equity Residential/oak';
 
+import VirginiaSquareTowers from './Dittmar/virginiaSquareTowers';
+import HendersonPark from './Dittmar/hendersonPark';
+import CourtlandTowers from './Dittmar/courtlandTowers';
+import CourtlandPark from './Dittmar/courtlandPark';
+
 // Washington DC
 import EyeStreet from './Equity Residential/eyeStreet';
 import Mass425 from './Equity Residential/mass425';
@@ -26,6 +31,11 @@ const runScraper = async () => {
     await Pershing.getListings();
     await ThePrime.getListings();
     await Oak.getListings();
+
+    await VirginiaSquareTowers.getListings();
+    await HendersonPark.getListings();
+    await CourtlandTowers.getListings();
+    await CourtlandPark.getListings();
 
     // Washington DC
     await EyeStreet.getListings();
